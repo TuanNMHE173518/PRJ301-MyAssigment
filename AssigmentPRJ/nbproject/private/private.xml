@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/images/header.jpg</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/base/BaseRequiredAuthentication.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/TimeTableController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Room.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/lecture/timetable.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Account.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/login.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Subject.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/ListStudentController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/StudentDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Lecture.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/LogoutController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Lession.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/TimeSlotDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/index.html</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/LessionDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/student/list.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Student.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Group.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Attendance.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/TimeSlot.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/AccountDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/util/TimeHelper.java</file>
+        </group>
+    </open-files>
+</project-private>
