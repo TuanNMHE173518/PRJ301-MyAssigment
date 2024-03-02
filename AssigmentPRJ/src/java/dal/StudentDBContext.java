@@ -14,7 +14,31 @@ import java.util.logging.Logger;
  *
  * @author ADMIN
  */
-public class StudentDBContext extends DBContext<Student>{
+public class StudentDBContext extends DBContext<Student> {
+
+    public ArrayList<Student> getStudentByLession(String lesid) {
+        ArrayList<Student> students = new ArrayList<>();
+        try {
+            PreparedStatement stm = null;
+            String sql = "Select s.[SID], s.SName from Student s join Enroll e on e.SID = s.SID\n"
+                    + "						join [Group] g on g.GID = e.GID\n"
+                    + "						join Lession les on les.GID = g.GID\n"
+                    + "where les.LesID = ?";
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, lesid);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                Student s = new Student();
+                s.setId(rs.getInt("SID"));
+                s.setName(rs.getString("SName"));
+                students.add(s);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return students;
+    }
 
     @Override
     public ArrayList<Student> list() {
@@ -24,7 +48,7 @@ public class StudentDBContext extends DBContext<Student>{
             String sql = "select * from student";
             stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Student s = new Student();
                 s.setId(rs.getInt("SID"));
                 s.setName(rs.getString("SName"));
@@ -33,13 +57,12 @@ public class StudentDBContext extends DBContext<Student>{
                 s.setEmail(rs.getString("email"));
                 students.add(s);
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(StudentDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             try {
-                if(!stm.isClosed()){
+                if (!stm.isClosed()) {
                     stm.close();
                 }
             } catch (SQLException ex) {
@@ -48,5 +71,5 @@ public class StudentDBContext extends DBContext<Student>{
         }
         return students;
     }
-    
+
 }

@@ -62,6 +62,7 @@
         <div class="container">
             <form action="takeattend" method="post">
                 <input type="hidden" name="lesid" value="${param.lesid}"/>
+                <input type="hidden" name="lesattend" value="${param.isattend}"/>
                 <div class="table_container">
 
                     <table >
