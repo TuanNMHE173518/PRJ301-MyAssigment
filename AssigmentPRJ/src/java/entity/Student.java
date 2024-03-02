@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * @author ADMIN
  */
 public class Student {
-    private int sid;
-    private String Sname;
+    private int id;
+    private String name;
     private Date date;
     private boolean gender;
     private String email;
@@ -20,21 +20,31 @@ public class Student {
     public Student() {
     }
 
-    public int getSid() {
-        return sid;
+    public int getId() {
+        return id;
     }
 
-    public void setSid(int sid) {
-        this.sid = sid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getSname() {
-        return Sname;
+    public String getName() {
+        return name;
     }
 
-    public void setSname(String Sname) {
-        this.Sname = Sname;
+    public void setName(String name) {
+        this.name = name;
     }
+
+    public ArrayList<Erollment> getErollments() {
+        return erollments;
+    }
+
+    public void setErollments(ArrayList<Erollment> erollments) {
+        this.erollments = erollments;
+    }
+
+    
 
     public Date getDate() {
         return date;

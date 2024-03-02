@@ -5,11 +5,13 @@
         <group>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/images/header.jpg</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/base/BaseRequiredAuthentication.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/home.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/TimeTableController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Room.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/lecture/timetable.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Account.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/login.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/HomeController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Subject.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/ListStudentController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/StudentDBContext.java</file>
@@ -20,6 +22,7 @@
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/index.html</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/LessionDBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/student/list.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/TakeAttendanceController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/LoginController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Student.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Group.java</file>
@@ -28,6 +31,7 @@
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/TimeSlot.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/AccountDBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/util/TimeHelper.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/lecture/takeatt.jsp</file>
         </group>
     </open-files>
 </project-private>

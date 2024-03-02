@@ -166,7 +166,7 @@
                                         
                                         <c:if test="${d eq less.date and slot.id eq less.timeslot.id}">
                                             <c:set var="hasData" value="true"></c:set>
-                                            <a href="attend?id="> ${less.group.name}<br/>
+                                            <a href="takeattend?lesid=${less.id}&group=${less.group.name}&isattend=${less.isAttend}"> ${less.group.name}<br/>
                                                 -${less.group.subject.name}<br/>
                                                 at ${less.room.number}<br/>
                                             </a>

@@ -20,9 +20,19 @@
             }
             label{
                 margin-bottom: -8px;
+                border: 1px solid gray;
+                background-color: #ddd;
+                border-radius:5px;
+                padding-bottom: 4px;
+                padding-left: 4px;
+                padding-right: 4px;
             }
             main {
                 flex: 1;
+            }
+
+            .home{
+                border-right: 1px solid black;
             }
             nav.navbar {
                 margin-bottom: 20px; /* Adjust the margin as needed */
@@ -30,7 +40,7 @@
 
             /* Custom Styles for the Header */
             header {
-                background-color: #343a40; /* Dark background color */
+                background-color: #FFA500; /* Dark background color */
                 color: #ffffff; /* White text color */
                 text-align: center;
                 padding: 20px;
@@ -40,8 +50,11 @@
     </head>
     <body>
         <!-- Header -->
-        <header>
-            <h1>FPT Education</h1>
+        <header class="text-center">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/FPT_Education_logo.svg/2560px-FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
+                <h1 class="ml-3 mb-0">FPT University Academic Portal</h1>
+            </div>
         </header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
@@ -52,20 +65,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link home" href="home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <c:if test="${sessionScope.account.role eq 1}">
-                            
+
                             <a class="nav-link" href="lecture/timetable?id=${sessionScope.account.lecture.id}">View Schedule</a> 
                         </c:if>
                         <c:if test="${sessionScope.account.role eq 2}">
-                            
+
                             <a class="nav-link" href="lecture/timetable?id=">View Score</a> 
                         </c:if>
-                         
+
                     </li>
-                    
+
 
                 </ul>
                 <ul class="navbar-nav">
@@ -81,13 +94,26 @@
 
         <!-- Content -->
         <main class="container mt-3">
-            <h1>Hello World!</h1>
+            <h1>CẢNH BÁO</h1>
             <!-- Your page content goes here -->
+            <p>Hiện nay có hình thức lừa đảo sửa dữ liệu điểm danh để chiếm đoạt tiền của sinh viên.
+                Các đối tượng có thể giả mạo là giảng viên, cán bộ Nhà trường để gửi thông tin cho một số sinh viên.
+                Vì vậy, sinh viên tuyệt đối không tin và thực hiện hành vi vi phạm nhằm tránh mất tiền, bị xử lý kỷ luật theo nội quy Nhà trường và có thể bị xử lý hình sự do đây là hành vi vi phạm pháp luật theo Luật an ninh mạng 2018.<br/>
+                Đồng thời, ngay khi nhận được các thông tin với nội dung lôi kéo, lừa đảo vui lòng gửi thông tin tới phòng Dịch vụ sinh viên tại các cơ sở.
+                Trân trọng thông báo,
+                TRƯỜNG ĐẠI HỌC FPT
+            </p>
+            <div>
+                <p>
+                    Mọi góp ý, thắc mắc xin liên hệ: Phòng dịch vụ sinh viên: Email: dichvusinhvien@fe.edu.vn. 
+                <h6>Điện thoại:(024)7308.13.13</h6>
+                </p>
+            </div>
         </main>
 
         <!-- Footer -->
         <footer class="bg-dark text-white text-center py-3 mt-auto">
-            <p>&copy; 2024 Your Website Name</p>
+            <p>&copy; Powered by FPT University</p>
         </footer>
 
 

@@ -20,6 +20,14 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TakeAttendanceController</servlet-name>
+        <servlet-class>controller.TakeAttendanceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewScoreController</servlet-name>
+        <servlet-class>controller.ViewScoreController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListStudentController</servlet-name>
         <url-pattern>/student/list</url-pattern>
@@ -39,5 +47,13 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TakeAttendanceController</servlet-name>
+        <url-pattern>/lecture/takeattend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewScoreController</servlet-name>
+        <url-pattern>/student/score</url-pattern>
     </servlet-mapping>
 </web-app>

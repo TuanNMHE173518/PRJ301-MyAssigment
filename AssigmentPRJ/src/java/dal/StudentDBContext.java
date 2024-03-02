@@ -26,8 +26,8 @@ public class StudentDBContext extends DBContext<Student>{
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {                
                 Student s = new Student();
-                s.setSid(rs.getInt("SID"));
-                s.setSname(rs.getString("SName"));
+                s.setId(rs.getInt("SID"));
+                s.setName(rs.getString("SName"));
                 s.setDate(rs.getDate("Date"));
                 s.setGender(rs.getBoolean("gender"));
                 s.setEmail(rs.getString("email"));

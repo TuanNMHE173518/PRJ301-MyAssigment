@@ -38,7 +38,7 @@ public class AccountDBContext extends DBContext<Account>{
                 }
                 if(rs.getInt("sid") != 0){
                     Student s = new Student();
-                    s.setSid(rs.getInt("sid"));
+                    s.setId(rs.getInt("sid"));
                     a.setStudent(s);
                 }
                 return a;
