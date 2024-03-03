@@ -31,19 +31,18 @@ public class LessionDBContext extends DBContext<Lession> {
     public void takeAttendanceWhenAttend(String lesid, ArrayList<Attendance> newatts) {
         try {
             connection.setAutoCommit(false);
-            Map<Integer, Attendance> currentAtts = getCurrentAttendance(newatts);
-            String sql_update_change = "UPDATE Attendance SET description = ?, isPresent = ?, datetime = GETDATE() WHERE lesid = ? AND sid = ?";
+//            Map<Integer, Attendance> currentAtts = getCurrentAttendance(newatts);
+            String sql_update_change = "UPDATE Attendance SET description = ?, isPresent = ?, datetime = GETDATE() WHERE lesid = ? AND sid = ? AND (isPresent <> ? OR description <> ?)";
             PreparedStatement stm_update_change = connection.prepareStatement(sql_update_change);
             for (Attendance att : newatts) {
-                Attendance currentatt = currentAtts.get(att.getStudent().getId());
-                if (currentatt != null && (!currentatt.getDescription().equals(att.getDescription())) || (currentatt.isIspresent() != att.isIspresent())) {
+//                Attendance currentatt = currentAtts.get(att.getStudent().getId());
                     stm_update_change.setString(1, att.getDescription());
                     stm_update_change.setBoolean(2, att.isIspresent());
                     stm_update_change.setString(3, lesid);
                     stm_update_change.setInt(4, att.getStudent().getId());
+                    stm_update_change.setString(6, att.getDescription());
+                    stm_update_change.setBoolean(5, att.isIspresent());
                     stm_update_change.addBatch();
-                }
-
             }
             stm_update_change.executeBatch();
 
@@ -65,42 +64,36 @@ public class LessionDBContext extends DBContext<Lession> {
 
     }
 
-    private Map<Integer, Attendance> getCurrentAttendance(ArrayList<Attendance> newatts) {
-        Map<Integer, Attendance> atts = new HashMap<>();
-        try {
-            String sql_select_att = "Select [sid], ispresent, [description] from Attendance\n"
-                    + "where lesid = ? and [sid] = ?";
-            PreparedStatement stm_select_att = connection.prepareStatement(sql_select_att);
-            for (Attendance newatt : newatts) {
-                stm_select_att.setString(1, newatt.getLession().getId());
-                stm_select_att.setInt(2, newatt.getStudent().getId());
-                ResultSet rs = stm_select_att.executeQuery();
-                while (rs.next()) {
-                    Attendance a = new Attendance();
-                    Student s = new Student();
-                    s.setId(rs.getInt("sid"));
-                    a.setStudent(s);
-                    a.setIspresent(rs.getBoolean("ispresent"));
-                    a.setDescription(rs.getString("description"));
-                    atts.put(rs.getInt("sid"), a);
-                }
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(LessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return atts;
-    }
+//    private Map<Integer, Attendance> getCurrentAttendance(ArrayList<Attendance> newatts) {
+//        Map<Integer, Attendance> atts = new HashMap<>();
+//        try {
+//            String sql_select_att = "Select [sid], ispresent, [description] from Attendance\n"
+//                    + "where lesid = ? and [sid] = ?";
+//            PreparedStatement stm_select_att = connection.prepareStatement(sql_select_att);
+//            for (Attendance newatt : newatts) {
+//                stm_select_att.setString(1, newatt.getLession().getId());
+//                stm_select_att.setInt(2, newatt.getStudent().getId());
+//                ResultSet rs = stm_select_att.executeQuery();
+//                while (rs.next()) {
+//                    Attendance a = new Attendance();
+//                    Student s = new Student();
+//                    s.setId(rs.getInt("sid"));
+//                    a.setStudent(s);
+//                    a.setIspresent(rs.getBoolean("ispresent"));
+//                    a.setDescription(rs.getString("description"));
+//                    atts.put(rs.getInt("sid"), a);
+//                }
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        return atts;
+//    }
 
     public void takeAttendanceWhenAbsent(String lesid, ArrayList<Attendance> atts) {
         try {
-            connection.setAutoCommit(false);
-//            String sql_remove = "DELETE Attendance WHERE lesid = ?";
-//            PreparedStatement stm_remove = connection.prepareStatement(sql_remove);
-//            stm_remove.setString(1, lesid);
-//            stm_remove.executeUpdate();
-
             String sql_insert_att = "INSERT INTO [dbo].[Attendance]\n"
                     + "           ([lesid]\n"
                     + "           ,[sid]\n"

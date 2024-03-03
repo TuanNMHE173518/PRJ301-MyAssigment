@@ -45,6 +45,12 @@
                 text-align: center;
                 padding: 20px;
             }
+            footer{
+                border-top: 1px solid black;
+            }
+            .contact{
+                margin-left: 100px;
+            }
         </style>
 
     </head>
@@ -100,26 +106,28 @@
                 Các đối tượng có thể giả mạo là giảng viên, cán bộ Nhà trường để gửi thông tin cho một số sinh viên.
                 Vì vậy, sinh viên tuyệt đối không tin và thực hiện hành vi vi phạm nhằm tránh mất tiền, bị xử lý kỷ luật theo nội quy Nhà trường và có thể bị xử lý hình sự do đây là hành vi vi phạm pháp luật theo Luật an ninh mạng 2018.<br/>
                 Đồng thời, ngay khi nhận được các thông tin với nội dung lôi kéo, lừa đảo vui lòng gửi thông tin tới phòng Dịch vụ sinh viên tại các cơ sở.
-                Trân trọng thông báo,
+                Trân trọng thông báo,<br/>
                 TRƯỜNG ĐẠI HỌC FPT
             </p>
-            <div>
-                <p>
-                    Mọi góp ý, thắc mắc xin liên hệ: Phòng dịch vụ sinh viên: Email: dichvusinhvien@fe.edu.vn. 
-                <h6>Điện thoại:(024)7308.13.13</h6>
-                </p>
-            </div>
+
+
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-3 mt-auto">
-            <p>&copy; Powered by FPT University</p>
-        </footer>
+
+        <div class="contact">
+            <p>
+                Mọi góp ý, thắc mắc xin liên hệ: Phòng dịch vụ sinh viên: Email: dichvusinhvien@fe.edu.vn. 
+            <h6>Điện thoại:(024)7308.13.13</h6>
+        </p>
+    </div>
+    <footer class="bg-white text-black text-center py-3 mt-auto">
+        <p>&copy; Powered by FPT University</p>
+    </footer>
 
 
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </html>
