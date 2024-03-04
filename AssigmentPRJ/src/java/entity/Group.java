@@ -17,7 +17,7 @@ public class Group {
     private Subject subject;
     private Lecture lecture;
     private ArrayList<Lession> lession = new ArrayList<>();
-    private ArrayList<Erollment> erollments = new ArrayList<>();
+    private ArrayList<Enrollment> erollments = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -59,11 +59,11 @@ public class Group {
         this.lession = lession;
     }
 
-    public ArrayList<Erollment> getErollments() {
+    public ArrayList<Enrollment> getErollments() {
         return erollments;
     }
 
-    public void setErollments(ArrayList<Erollment> erollments) {
+    public void setErollments(ArrayList<Enrollment> erollments) {
         this.erollments = erollments;
     }
     

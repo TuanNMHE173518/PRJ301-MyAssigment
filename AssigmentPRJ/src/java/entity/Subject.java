@@ -14,6 +14,7 @@ public class Subject {
     private String id;
     private String name;
     private int credit;
+    private String fullname;
     private ArrayList<Group> groups = new ArrayList<>();
 
     public Subject() {
@@ -21,6 +22,14 @@ public class Subject {
 
     public String getId() {
         return id;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public void setId(String id) {

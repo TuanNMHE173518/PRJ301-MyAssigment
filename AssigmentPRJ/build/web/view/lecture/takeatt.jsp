@@ -133,7 +133,7 @@
                         <label class="label_name">${sessionScope.account.displayname}</label> 
                     </li>
                     <li class="nav-item ml-auto">
-                        <a class="nav-link" href="logout">Logout</a>  
+                        <a class="nav-link" href="../logout">Logout</a>  
                     </li>
                 </ul>
             </div>

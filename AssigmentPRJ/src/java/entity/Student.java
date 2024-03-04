@@ -15,7 +15,7 @@ public class Student {
     private Date date;
     private boolean gender;
     private String email;
-    private ArrayList<Erollment> erollments = new ArrayList<>();
+    private ArrayList<Enrollment> erollments = new ArrayList<>();
 
     public Student() {
     }
@@ -36,11 +36,11 @@ public class Student {
         this.name = name;
     }
 
-    public ArrayList<Erollment> getErollments() {
+    public ArrayList<Enrollment> getErollments() {
         return erollments;
     }
 
-    public void setErollments(ArrayList<Erollment> erollments) {
+    public void setErollments(ArrayList<Enrollment> erollments) {
         this.erollments = erollments;
     }
 
