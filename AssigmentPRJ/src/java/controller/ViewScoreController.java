@@ -6,8 +6,10 @@ package controller;
 
 import controller.base.BaseRequiredAuthentication;
 import dal.EnrollmentDBContext;
+import dal.GradeDBContext;
 import entity.Account;
 import entity.Enrollment;
+import entity.Grade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -45,9 +47,19 @@ public class ViewScoreController extends BaseRequiredAuthentication {
     protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account)
             throws ServletException, IOException {
         int sid = Integer.parseInt(request.getParameter("id"));
+        String suid = request.getParameter("suid");
+        GradeDBContext grDb = new GradeDBContext();
+        ArrayList<Grade> grades = new ArrayList<>();
+        if(suid != null){
+            grades = grDb.getGradeByStudentIdAndSuject(sid, suid);
+        }
+        
         EnrollmentDBContext enrollDb = new EnrollmentDBContext();
         ArrayList<Enrollment> enrolls = enrollDb.getEnrollmentByStudentID(sid);
         
+        float average = grDb.getAverageScore(sid, suid);
+        request.setAttribute("average", average);
+        request.setAttribute("grades", grades);
         request.setAttribute("enrolls", enrolls);
         request.getRequestDispatcher("../view/student/score.jsp").forward(request, response);
     }

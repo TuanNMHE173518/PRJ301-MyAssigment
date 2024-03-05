@@ -80,7 +80,7 @@
                         </c:if>
                         <c:if test="${sessionScope.account.role eq 2}">
 
-                            <a class="nav-link" href="student/score?id=">View Score</a> 
+                            <a class="nav-link" href="student/score?id=${sessionScope.account.student.id}">View Score</a> 
                         </c:if>
 
                     </li>
