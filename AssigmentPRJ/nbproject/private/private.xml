@@ -28,12 +28,16 @@
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/student/list.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/TakeAttendanceController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Feature.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/web/view/student/score.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/ViewScoreController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Student.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Group.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/RoleDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/controller/base/BaseRBACController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Attendance.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/GradeDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Role.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/Assessment.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/dal/DBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/PRJ301-TuanDeptrai/AssigmentPRJ/src/java/entity/TimeSlot.java</file>

@@ -11,7 +11,6 @@ package entity;
 public class Account {
     private String username;
     private String password;
-    private int role;
     private String displayname;
     private Lecture lecture;
     private Student student;
@@ -60,13 +59,7 @@ public class Account {
         this.password = password;
     }
 
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
+    
     
     
 }

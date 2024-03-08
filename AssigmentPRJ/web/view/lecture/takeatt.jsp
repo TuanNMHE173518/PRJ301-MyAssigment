@@ -99,7 +99,7 @@
     <body>
         <header class="text-center">
             <div class="d-flex justify-content-center align-items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/FPT_Education_logo.svg/2560px-FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
+                <img src="../view/images/FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
                 <h1 class="ml-3 mb-0">FPT University Academic Portal</h1>
             </div>
         </header>
@@ -115,15 +115,16 @@
                         <a class="nav-link home" href="../home">Home</a>
                     </li>
                     <li class="nav-item justify-content-center align-items-center d-flex">
-                        <c:if test="${sessionScope.account.role eq 1}">
+                        <c:forEach items="${sessionScope.roles}" var="role">
+                            <c:if test="${role.id eq 1}">
 
-                            <h6 class="nav_if">View Attend</h6> 
-                        </c:if>
-                        <c:if test="${sessionScope.account.role eq 2}">
+                                <h6 class="nav_if">View Attend</h6> 
+                            </c:if>
+                            <c:if test="${role.id eq 2}">
 
-                            <h6 class="nav_if">View Score</h6>
-                        </c:if>
-
+                                <h6 class="nav_if">View Score</h6>
+                            </c:if>
+                        </c:forEach>
                     </li>
 
 

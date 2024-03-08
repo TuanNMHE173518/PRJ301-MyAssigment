@@ -38,7 +38,7 @@
                 margin-bottom: 20px; /* Adjust the margin as needed */
             }
 
-            /* Custom Styles for the Header */
+            
             header {
                 background-color: #FFA500; /* Dark background color */
                 color: #ffffff; /* White text color */
@@ -58,7 +58,9 @@
         <!-- Header -->
         <header class="text-center">
             <div class="d-flex justify-content-center align-items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/FPT_Education_logo.svg/2560px-FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
+                <div>
+                    <img src="view/images/FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
+                </div>
                 <h1 class="ml-3 mb-0">FPT University Academic Portal</h1>
             </div>
         </header>
@@ -74,15 +76,16 @@
                         <a class="nav-link home" href="home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <c:if test="${sessionScope.account.role eq 1}">
+                        <c:forEach items="${sessionScope.roles}" var="role">
+                            <c:if test="${role.id eq 1}">
 
-                            <a class="nav-link" href="lecture/timetable?id=${sessionScope.account.lecture.id}">View Schedule</a> 
-                        </c:if>
-                        <c:if test="${sessionScope.account.role eq 2}">
+                                <a class="nav-link" href="lecture/timetable?id=${sessionScope.account.lecture.id}">View Schedule</a> 
+                            </c:if>
+                            <c:if test="${role.id eq 2}">
 
-                            <a class="nav-link" href="student/score?id=${sessionScope.account.student.id}">View Score</a> 
-                        </c:if>
-
+                                <a class="nav-link" href="student/score?id=${sessionScope.account.student.id}">View Score</a> 
+                            </c:if>
+                        </c:forEach>
                     </li>
 
 

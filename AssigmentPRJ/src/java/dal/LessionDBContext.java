@@ -28,7 +28,7 @@ import util.TimeHelper;
  */
 public class LessionDBContext extends DBContext<Lession> {
 
-    public void takeAttendanceWhenAttend(String lesid, ArrayList<Attendance> newatts) {
+      public void takeAttendanceWhenAttend(String lesid, ArrayList<Attendance> newatts) {
         try {
             connection.setAutoCommit(false);
 //            Map<Integer, Attendance> currentAtts = getCurrentAttendance(newatts);

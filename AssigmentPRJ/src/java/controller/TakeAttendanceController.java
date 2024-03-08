@@ -5,12 +5,14 @@
 
 package controller;
 
+import controller.base.BaseRBACController;
 import controller.base.BaseRequiredAuthentication;
 import dal.LessionDBContext;
 import dal.StudentDBContext;
 import entity.Account;
 import entity.Attendance;
 import entity.Lession;
+import entity.Role;
 import entity.Student;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +27,7 @@ import java.util.ArrayList;
  *
  * @author ADMIN
  */
-public class TakeAttendanceController extends BaseRequiredAuthentication {
+public class TakeAttendanceController extends BaseRBACController {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -41,11 +43,13 @@ public class TakeAttendanceController extends BaseRequiredAuthentication {
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
+     * @param account
+     * @param roles
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account,ArrayList<Role> roles)
     throws ServletException, IOException {
         String lesid = request.getParameter("lesid");
         LessionDBContext lessDB = new LessionDBContext();
@@ -62,11 +66,13 @@ public class TakeAttendanceController extends BaseRequiredAuthentication {
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
+     * @param account
+     * @param roles
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account,ArrayList<Role> roles)
     throws ServletException, IOException {
         String lesid = request.getParameter("lesid");
         LessionDBContext lesDb = new LessionDBContext();

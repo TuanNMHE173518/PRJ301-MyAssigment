@@ -5,20 +5,23 @@
 
 package controller;
 
+import controller.base.BaseRBACController;
 import controller.base.BaseRequiredAuthentication;
 import entity.Account;
+import entity.Role;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  *
  * @author ADMIN
  */
-public class HomeController extends BaseRequiredAuthentication {
+public class HomeController extends BaseRBACController {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,7 +45,7 @@ public class HomeController extends BaseRequiredAuthentication {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
     throws ServletException, IOException {
         processRequest(request, response);
     } 
@@ -55,7 +58,7 @@ public class HomeController extends BaseRequiredAuthentication {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
     throws ServletException, IOException {
         processRequest(request, response);
     }

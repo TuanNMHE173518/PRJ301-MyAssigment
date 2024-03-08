@@ -4,7 +4,7 @@
     Author     : ADMIN
 --%>
 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <style>
+
             .table_container {
                 font-family: 'Arial', sans-serif;
                 margin: 20px;
@@ -125,18 +126,23 @@
 
             footer{
                 border-top: 1px solid black;
-                
+
             }
             .contact{
                 margin-top: 100px;
                 margin-left: 100px;
+            }
+            a.disabled {
+                pointer-events: none;
+                color: gray;
+                text-decoration: none;
             }
         </style>
     </head>
     <body>
         <header class="text-center">
             <div class="d-flex justify-content-center align-items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/FPT_Education_logo.svg/2560px-FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
+                <img src="../view/images/FPT_Education_logo.svg.png" alt="FPT Education Logo" height="40">
                 <h1 class="ml-3 mb-0">FPT University Academic Portal</h1>
             </div>
         </header>
@@ -152,15 +158,16 @@
                         <a class="nav-link home" href="../home">Home</a>
                     </li>
                     <li class="nav-item d-flex justify-content-center align-items-center">
-                        <c:if test="${sessionScope.account.role eq 1}">
+                        <c:forEach items="${sessionScope.roles}" var="role">
+                            <c:if test="${role.id eq 1}">
 
-                            <h6 class="nav_if">View Schedule</h6>
-                        </c:if>
-                        <c:if test="${sessionScope.account.role eq 2}">
+                                <h6 class="nav_if">View Schedule</h6>
+                            </c:if>
+                            <c:if test="${role.id eq 2}">
 
-                            <h6 class="nav_if">View Score</h6>
-                        </c:if>
-
+                                <h6 class="nav_if">View Score</h6>
+                            </c:if>
+                        </c:forEach>
                     </li>
 
 
@@ -249,7 +256,11 @@
                                     <c:if test="${d eq less.date and slot.id eq less.timeslot.id}">
 
                                         <c:set var="hasData" value="true"></c:set>
-                                        <a  href="takeattend?lesid=${less.id}&group=${less.group.name}&isattend=${less.isAttend}"> ${less.group.name}<br/>
+                                        <a class="${less.date > requestScope.currentDate ? 'disabled' : ''}"
+                                           href="takeattend?lesid=${less.id}&group=${less.group.name}&isattend=${less.isAttend}"
+                                           >
+
+                                            ${less.group.name}<br/>
                                             -${less.group.subject.name}<br/>
                                             at ${less.room.number}<br/>
                                         </a>

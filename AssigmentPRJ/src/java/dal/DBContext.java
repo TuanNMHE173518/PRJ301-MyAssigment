@@ -20,7 +20,7 @@ public abstract class DBContext<T> {
     public DBContext() {
         try {
             String user = "tuannm";
-            String pass = "123";
+            String pass = "12";
             String url = "jdbc:sqlserver://MSI\\TUANDEPTRY:1433;databaseName=PRJ301;encrypt=true;trustServerCertificate=true";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             try {

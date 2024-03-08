@@ -4,11 +4,13 @@
  */
 package controller;
 
+import controller.base.BaseRBACController;
 import controller.base.BaseRequiredAuthentication;
 import dal.LessionDBContext;
 import dal.TimeSlotDBContext;
 import entity.Account;
 import entity.Lession;
+import entity.Role;
 import entity.TimeSlot;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,7 +32,7 @@ import util.TimeHelper;
  *
  * @author ADMIN
  */
-public class TimeTableController extends BaseRequiredAuthentication {
+public class TimeTableController extends BaseRBACController {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,7 +53,7 @@ public class TimeTableController extends BaseRequiredAuthentication {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
             throws ServletException, IOException {
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -91,7 +93,8 @@ public class TimeTableController extends BaseRequiredAuthentication {
             LessionDBContext lessDB = new LessionDBContext();
             ArrayList<Lession> lessions = lessDB.getLessionBy(lecid, helper.convertUtilToSql(from), helper.convertUtilToSql(to));
 
-            
+            java.util.Date currentDate = Calendar.getInstance().getTime();
+            request.setAttribute("currentDate", helper.convertUtilToSql(currentDate));
             
             ArrayList<Integer> years = helper.generateYears();
             request.setAttribute("year", year);
@@ -117,7 +120,7 @@ public class TimeTableController extends BaseRequiredAuthentication {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
             throws ServletException, IOException {
     }
 

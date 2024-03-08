@@ -28,29 +28,29 @@ public class TimeHelper {
     public ArrayList<String> generateWeeks(int year) {
         ArrayList<String> weeks = new ArrayList<>();
 
-        // Tạo Calendar và thiết lập nó đến ngày đầu tiên của năm
+        
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, Calendar.JANUARY);
         calendar.set(Calendar.DAY_OF_MONTH, 1);
 
-        // Di chuyển đến ngày đầu tiên của tuần
+        
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        // Lặp qua các tuần trong năm
+        
         while (calendar.get(Calendar.YEAR) == year) {
-            // Lấy ngày bắt đầu và kết thúc của tuần
+            
             String weekStart = formatDate(calendar.getTime());
             calendar.add(Calendar.DAY_OF_MONTH, 6);
             String weekEnd = formatDate(calendar.getTime());
 
-            // Tạo chuỗi mô tả tuần và thêm vào danh sách
+            
             String weekRange = "" + weekStart + " to " + weekEnd;
             weeks.add(weekRange);
 
-            // Di chuyển đến ngày đầu tiên của tuần tiếp theo
+            
             calendar.add(Calendar.DAY_OF_MONTH, 1);
             while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
                 calendar.add(Calendar.DAY_OF_MONTH, 1);
@@ -108,7 +108,7 @@ public class TimeHelper {
         calendar.add(Calendar.DAY_OF_MONTH, 6);
         String weekEnd = formatDate(calendar.getTime());
 
-        // Tạo chuỗi mô tả tuần
+        
         return "" + weekStart + " to " + weekEnd;
     }
     public static ArrayList<java.sql.Date> toList(java.sql.Date from, java.sql.Date to)

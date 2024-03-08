@@ -18,7 +18,7 @@ import java.io.IOException;
  *
  * @author ADMIN
  */
-public class BaseRequiredAuthentication extends HttpServlet{
+public abstract class BaseRequiredAuthentication extends HttpServlet{
     
     private Account getAuthentication(HttpServletRequest req){
         HttpSession session = req.getSession();
