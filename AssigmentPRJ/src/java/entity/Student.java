@@ -15,6 +15,7 @@ public class Student {
     private Date date;
     private boolean gender;
     private String email;
+    private String image;
     private ArrayList<Enrollment> erollments = new ArrayList<>();
 
     public Student() {
@@ -22,6 +23,14 @@ public class Student {
 
     public int getId() {
         return id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setId(int id) {

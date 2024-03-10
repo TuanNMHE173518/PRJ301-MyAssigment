@@ -94,6 +94,10 @@
                 margin-top: 100px;
                 margin-left: 100px;
             }
+            .img_student{
+                width: 200px;
+                height: 200px;
+            }
         </style>
     </head>
     <body>
@@ -154,6 +158,7 @@
                             <td class="td_week"><label>GROUP</label></td>
                             <td class="td_week"><label>CODE</label></td>
                             <td class="td_week"><label>NAME</label></td>
+                            <td class="td_week"><label>IMAGE</label></td>
                             <td class="td_week"><label>STATUS</label></td>
                             <td class="td_week"><label>COMMENT</label></td>
                             <td class="td_week"><label>TAKER</label></td>
@@ -169,9 +174,10 @@
                                 <td>${requestScope.group}</td>
                                 <td>${a.student.id}</td>
                                 <td>${a.student.name}</td>
+                                <td> <img class="img_student" src="${a.student.image}" alt="alt"/></td>
                                 <td> 
-                                    <input type="radio" ${a.ispresent?"checked=\"checked\"":""} value="attended" name="ispresent${a.student.id}"/>attended 
-                                    <input type="radio" ${!a.ispresent?"checked=\"checked\"":""} value="absent" name="ispresent${a.student.id}"/>absent
+                                    <input type="radio" ${a.ispresent?"checked=\"checked\"":""} value="attended" name="ispresent${a.student.id}"/><span style="color: green">Attended</span>
+                                    <input type="radio" ${!a.ispresent?"checked=\"checked\"":""} value="absent" name="ispresent${a.student.id}"/><span style="color: red">Absent</span>
 
                                 </td>
                                 <td><input type="text" value="${a.description}" name="description${a.student.id}"/></td>

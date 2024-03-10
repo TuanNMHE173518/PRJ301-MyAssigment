@@ -182,7 +182,7 @@ public class LessionDBContext extends DBContext<Lession> {
     public ArrayList<Attendance> getAttendanceByLession(String lesid) {
         ArrayList<Attendance> atts = new ArrayList<>();
         try {
-            String sql = "SELECT  s.SID, s.SName,\n"
+            String sql = "SELECT  s.SID, s.SName, s.image,\n"
                     + "a.attendID, a.[datetime], a.[description], a.ispresent\n"
                     + "FROM Student s join Enroll e on e.SID = s.SID\n"
                     + "			   join [Group] g on g.GID = e.GID\n"
@@ -205,6 +205,7 @@ public class LessionDBContext extends DBContext<Lession> {
 
                 s.setId(rs.getInt("SID"));
                 s.setName(rs.getString("SName"));
+                s.setImage(rs.getString("image"));
                 att.setStudent(s);
 
                 att.setId(rs.getInt("attendID"));

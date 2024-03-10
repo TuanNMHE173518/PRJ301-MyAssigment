@@ -20,8 +20,8 @@
                 margin: 0;
             }
 
-            td {
-                padding: 0px 3px;
+            #table_score td {
+                padding: 10px;
 
             }
             .table_container {
@@ -32,10 +32,7 @@
                 justify-content: center;
                 align-items: center;
             }
-            #table_score .row1 td{
-                border-left: 2px solid white;
-                border-right: 2px solid white;
-            }
+
             .row_content td{
                 border-bottom: 2px solid #ddd;
             }
@@ -103,22 +100,21 @@
                 display: none;
             }
 
-            .grade_catgory{
-                border: none;
+            .view_absent{
+                border-top: 5px solid #E9F7F6;
+                font-weight: bold;
             }
-
-            .status-studying {
-                color: blue;
+            .timeslot{
+                padding: 3px;
+                background-color: #D1504C;
+                color: white;
+                border-radius: 5px;
             }
-
-
-            .status-passed {
-                color: green;
-            }
-
-
-            .status-not-passed {
-                color: red;
+            .datetime{
+                padding: 3px;
+                background-color: #3278B4;
+                color: white;
+                border-radius: 5px;
             }
         </style>
 
@@ -237,7 +233,7 @@
 
 
         <div id="table_score" class="table_container">
-            <table >
+            <table border="1px">
                 <tr class="row1">
                     <td>NO</td>
                     <td>DATE</td>
@@ -249,12 +245,20 @@
                     <td>LECTURER'S COMMENT</td>
                 </tr>
                 <c:forEach items="${requestScope.atts}" var="a" varStatus="loop">
-                    <tr>
+                    <tr >
                         <td>
                             ${loop.index +1}
                         </td>
-                        <td>${a.lession.date}</td>
-                        <td>${a.lession.timeslot.name}(${a.lession.timeslot.start}-${a.lession.timeslot.start})</td>
+                        <td>
+                            <span class="datetime">
+                                ${requestScope.days[loop.index]} ${a.lession.date}
+                            </span>
+                        </td>
+                        <td> 
+                            <span class="timeslot">
+                                ${a.lession.timeslot.name}(${a.lession.timeslot.start}-${a.lession.timeslot.start})
+                            </span>
+                        </td>
                         <td>${a.lession.room.number}</td>
                         <td>${a.lession.lecture.name}_(${a.lession.lecture.email})</td>
                         <td>${a.lession.group.name}</td>
@@ -263,22 +267,27 @@
                                 Future
                             </c:if>
                             <c:if test="${a.id ne 0}">
-                                ${a.ispresent}
+                                <c:if test="${a.ispresent}">
+                                    <span style="color: green;">Present</span>
+                                </c:if>
+                                <c:if test="${not a.ispresent}">
+                                    <span style="color: red;">Absent</span>
+                                </c:if>
                             </c:if>
                         </td>
-                        
+
                         <td>${a.description}</td>
-                        
+
                     </tr>
-                    
+
                 </c:forEach>
-                    
-                    <tr>
-                        
-                        <td colspan="7">
-                            ABSENT: ${requestScope.percent}% ABSENT SO FAR (${requestScope.absent} ABSENT ON ${requestScope.atts.size()} TOTAL).
-                        </td>
-                    </tr>    
+
+                <tr class="view_absent">
+
+                    <td colspan="7" >
+                        ABSENT: ${requestScope.percent}% ABSENT SO FAR (${requestScope.absent} ABSENT ON ${requestScope.atts.size()} TOTAL).
+                    </td>
+                </tr>    
             </table>
         </div>
         <div class="contact">

@@ -17,7 +17,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
 import java.util.ArrayList;
+import util.TimeHelper;
 
 /**
  *
@@ -46,6 +48,8 @@ public class ViewAttendanceController extends BaseRBACController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
             throws ServletException, IOException {
+        TimeHelper timehelp = new TimeHelper();
+        
         int sid = Integer.parseInt(request.getParameter("id"));
         EnrollmentDBContext enDb = new EnrollmentDBContext();
         LessionDBContext lessDb = new LessionDBContext();
@@ -70,7 +74,15 @@ public class ViewAttendanceController extends BaseRBACController {
             }
         } catch (NumberFormatException e) {
         }
-
+        ArrayList<String> days = new ArrayList<>();
+        for (int i = 0; i < atts.size(); i++) {
+            
+            String d = timehelp.getDayofWeek( atts.get(i).getLession().getDate());
+            days.add(d);
+            
+        }
+        
+        request.setAttribute("days", days);
         request.setAttribute("absent", absent);
         request.setAttribute("atts", atts);
         request.setAttribute("enrolls", enrolls);

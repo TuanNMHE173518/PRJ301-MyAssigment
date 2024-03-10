@@ -15,7 +15,17 @@ import java.util.List;
  * @author ADMIN
  */
 public class TimeHelper {
-
+    public String getDayofWeek(java.sql.Date date){
+        SimpleDateFormat dateformat = new SimpleDateFormat("EEEE");
+        java.util.Date dateafter = new java.util.Date(date.getTime());
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateafter);
+        String day = dateformat.format(dateafter);
+        return day;
+        
+    }
+    
     public ArrayList<Integer> generateYears() {
         ArrayList<Integer> years = new ArrayList<>();
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
