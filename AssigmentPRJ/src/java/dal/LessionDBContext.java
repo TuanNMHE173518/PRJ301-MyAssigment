@@ -28,21 +28,89 @@ import util.TimeHelper;
  */
 public class LessionDBContext extends DBContext<Lession> {
 
-      public void takeAttendanceWhenAttend(String lesid, ArrayList<Attendance> newatts) {
+    public ArrayList<Attendance> getAttendanceByStudentIdAndSubject(int sid, String suid) {
+        ArrayList<Attendance> atts = new ArrayList<>();
+        try {
+            String sql = "SELECT le.LesID, le.[Date],\n"
+                    + "	   t.timeID, t.tname, t.[start], t.[end],\n"
+                    + "	   r.RID, r.Rnumber,\n"
+                    + "	   l.LecId, l.LecName, l.email,\n"
+                    + "	   g.GID, g.GName,\n"
+                    + "	   a.attendID, a.ispresent, a.[description]\n"
+                    + "FROM Student s	join Enroll e on s.[SID] = e.[SID]\n"
+                    + "					    join [Group] g on g.GID = e.GID\n"
+                    + "						join Lession le on le.GID = g.GID\n"
+                    + "						join TimeSlot t on t.timeID = le.TimeID\n"
+                    + "						join Room r on r.RID = le.RID\n"
+                    + "						join Lecture l on le.LecID = l.LecId\n"
+                    + "						left join Attendance a on a.lesid = le.LesID and a.[sid] =s.[SID]\n"
+                    + "where s.[SID] = ?  and g.SuID = ?\n"
+                    + "order by le.[Date]";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, sid);
+            stm.setString(2, suid);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Attendance a = new Attendance();
+                Lession le = new Lession();
+                TimeSlot t = new TimeSlot();
+                Room r = new Room();
+                Lecture l = new Lecture();
+                Group g = new Group();
+
+                a.setId(rs.getInt("attendID"));
+                if (a.getId() != 0) {
+                    a.setIspresent(rs.getBoolean("ispresent"));
+                    a.setDescription(rs.getString("description"));
+                }
+
+                le.setId(rs.getString("LesID"));
+                le.setDate(rs.getDate("Date"));
+
+                t.setId(rs.getInt("timeID"));
+                t.setName(rs.getString("tname"));
+                t.setStart(rs.getTime("start"));
+                t.setEnd(rs.getTime("end"));
+                le.setTimeslot(t);
+
+                r.setId(rs.getString("RID"));
+                r.setNumber(rs.getString("Rnumber"));
+                le.setRoom(r);
+
+                l.setId(rs.getInt("LecId"));
+                l.setName(rs.getString("LecName"));
+                l.setEmail(rs.getString("email"));
+                le.setLecture(l);
+
+                g.setId(rs.getString("GID"));
+                g.setName(rs.getString("GName"));
+                le.setGroup(g);
+
+                a.setLession(le);
+                atts.add(a);
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return atts;
+
+    }
+
+    public void takeAttendanceWhenAttend(String lesid, ArrayList<Attendance> newatts) {
         try {
             connection.setAutoCommit(false);
-//            Map<Integer, Attendance> currentAtts = getCurrentAttendance(newatts);
             String sql_update_change = "UPDATE Attendance SET description = ?, isPresent = ?, datetime = GETDATE() WHERE lesid = ? AND sid = ? AND (isPresent <> ? OR description <> ?)";
             PreparedStatement stm_update_change = connection.prepareStatement(sql_update_change);
             for (Attendance att : newatts) {
-//                Attendance currentatt = currentAtts.get(att.getStudent().getId());
-                    stm_update_change.setString(1, att.getDescription());
-                    stm_update_change.setBoolean(2, att.isIspresent());
-                    stm_update_change.setString(3, lesid);
-                    stm_update_change.setInt(4, att.getStudent().getId());
-                    stm_update_change.setString(6, att.getDescription());
-                    stm_update_change.setBoolean(5, att.isIspresent());
-                    stm_update_change.addBatch();
+                stm_update_change.setString(1, att.getDescription());
+                stm_update_change.setBoolean(2, att.isIspresent());
+                stm_update_change.setString(3, lesid);
+                stm_update_change.setInt(4, att.getStudent().getId());
+                stm_update_change.setString(6, att.getDescription());
+                stm_update_change.setBoolean(5, att.isIspresent());
+                stm_update_change.addBatch();
             }
             stm_update_change.executeBatch();
 
@@ -63,34 +131,6 @@ public class LessionDBContext extends DBContext<Lession> {
         }
 
     }
-
-//    private Map<Integer, Attendance> getCurrentAttendance(ArrayList<Attendance> newatts) {
-//        Map<Integer, Attendance> atts = new HashMap<>();
-//        try {
-//            String sql_select_att = "Select [sid], ispresent, [description] from Attendance\n"
-//                    + "where lesid = ? and [sid] = ?";
-//            PreparedStatement stm_select_att = connection.prepareStatement(sql_select_att);
-//            for (Attendance newatt : newatts) {
-//                stm_select_att.setString(1, newatt.getLession().getId());
-//                stm_select_att.setInt(2, newatt.getStudent().getId());
-//                ResultSet rs = stm_select_att.executeQuery();
-//                while (rs.next()) {
-//                    Attendance a = new Attendance();
-//                    Student s = new Student();
-//                    s.setId(rs.getInt("sid"));
-//                    a.setStudent(s);
-//                    a.setIspresent(rs.getBoolean("ispresent"));
-//                    a.setDescription(rs.getString("description"));
-//                    atts.put(rs.getInt("sid"), a);
-//                }
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LessionDBContext.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        return atts;
-//    }
 
     public void takeAttendanceWhenAbsent(String lesid, ArrayList<Attendance> atts) {
         try {
@@ -244,13 +284,6 @@ public class LessionDBContext extends DBContext<Lession> {
 
     }
 
-//    public static void main(String[] args) throws ParseException {
-//        LessionDBContext lDB = new LessionDBContext();
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-//        TimeHelper helper = new TimeHelper();
-//        ArrayList<Lession> lession = lDB.getLessionBy(1,helper.convertUtilToSql(sdf.parse("05/02/2024")) , helper.convertUtilToSql(sdf.parse("02/03/2024")));
-//        System.out.println(lession.get(0).getGroup().getName());
-//    }
     @Override
     public ArrayList<Lession> list() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

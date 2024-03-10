@@ -87,6 +87,15 @@
                             </c:if>
                         </c:forEach>
                     </li>
+                    <li class="nav-item">
+                        <c:forEach items="${sessionScope.roles}" var="role">
+                            
+                            <c:if test="${role.id eq 2}">
+
+                                <a class="nav-link" href="student/attend?id=${sessionScope.account.student.id}">View Attend</a> 
+                            </c:if>
+                        </c:forEach>
+                    </li>
 
 
                 </ul>
