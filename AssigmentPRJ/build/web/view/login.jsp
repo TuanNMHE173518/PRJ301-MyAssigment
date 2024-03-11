@@ -18,7 +18,20 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
         <style>
+            a {
+                display: inline-block;
+                padding: 3px 20px;
+                text-decoration: none;
+                background-color: #125ACD;
+                color: white;
+                border-radius: 4px;
+                
+                
+            }
 
+            a:hover {
+                background-color: #ddd;
+            }
 
             .alert {
                 margin-top: 10px;
@@ -26,9 +39,9 @@
             }
             .login-wrap {
                 background-color: #FFA500;
-                border: 2px solid #FF8C00; /* Màu xanh lam */
-                border-radius: 10px; /* Bo tròn đường viền */
-                padding: 20px; /* Khoảng cách giữa đường viền và nội dung */
+                border: 2px solid #FF8C00; 
+                border-radius: 10px; 
+                padding: 20px; 
             }
         </style>
 
@@ -66,6 +79,13 @@
                                             </div>
                                             <c:remove var="loginError" scope="session" />
                                         </c:when>
+                                        <c:when test="${not empty sessionScope.loginggfail}">
+                                            <div class="alert alert-danger mt-2" role="alert">
+                                                Your email can't access our website. Please try again.
+                                            </div>
+                                            <c:remove var="loginggfail" scope="session" />
+                                        </c:when>
+                                        
                                     </c:choose>
                                 </div>
                                 <div class="form-group d-md-flex">
