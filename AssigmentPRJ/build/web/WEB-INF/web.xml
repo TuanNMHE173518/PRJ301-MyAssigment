@@ -32,6 +32,10 @@
         <servlet-name>ViewAttendanceController</servlet-name>
         <servlet-class>controller.ViewAttendanceController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GoogleLoginServlet</servlet-name>
+        <servlet-class>controller.googlesignin.GoogleLoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListStudentController</servlet-name>
         <url-pattern>/student/list</url-pattern>
@@ -63,5 +67,9 @@
     <servlet-mapping>
         <servlet-name>ViewAttendanceController</servlet-name>
         <url-pattern>/student/attend</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GoogleLoginServlet</servlet-name>
+        <url-pattern>/GoogleLoginServlet</url-pattern>
     </servlet-mapping>
 </web-app>

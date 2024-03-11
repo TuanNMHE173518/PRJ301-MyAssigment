@@ -49,12 +49,14 @@
                                 <span class="fa fa-user-o fa-3x"></span>
                             </div>
                             <h3 class="text-center mb-4">FPT Education</h3>
+
+                            <c:set var="cookie" value="${pageContext.request.cookies}" />
                             <form action="login" class="login-form" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control rounded-left" placeholder="Username" required name="username">
+                                    <input type="text" class="form-control rounded-left" value="${cookie.username.value}" placeholder="Username" required name="username">
                                 </div>
                                 <div class="form-group d-flex">
-                                    <input type="password" class="form-control rounded-left" placeholder="Password" required name="password">
+                                    <input type="password" class="form-control rounded-left" value="${cookie.password.value}" placeholder="Password" required name="password">
                                 </div>
                                 <div class="form-group">
                                     <c:choose>
@@ -69,12 +71,15 @@
                                 <div class="form-group d-md-flex">
                                     <div class="w-50">
                                         <label class="checkbox-wrap checkbox-primary">Remember Me
-                                            <input type="checkbox" checked name="remember">
+                                            <input type="checkbox" checked name="remember" ${cookie.remember!=null?'checked':''}>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-
+                                    <div>
+                                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9981/AssigmentPRJ/GoogleLoginServlet&response_type=code&client_id=857065850978-s9bfjh0gti0j11nek5t92jp8elsh9sfe.apps.googleusercontent.com&approval_prompt=force">Google Sign-In</a>
+                                    </div>        
                                 </div>
+
                                 <div class="form-group d-flex justify-content-center align-items-center">
                                     <button type="submit" style="background-color: #FFFFFF; color: black;" class="btn btn-primary  rounded submit p-3 px-5">Get Started</button>
                                 </div>
@@ -85,9 +90,6 @@
             </div>
         </section>
 
-        <!--        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <!--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
 
 
     </body>

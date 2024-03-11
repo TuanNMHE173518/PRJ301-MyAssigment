@@ -38,7 +38,7 @@ public class LessionDBContext extends DBContext<Lession> {
                     + "	   g.GID, g.GName,\n"
                     + "	   a.attendID, a.ispresent, a.[description]\n"
                     + "FROM Student s	join Enroll e on s.[SID] = e.[SID]\n"
-                    + "					    join [Group] g on g.GID = e.GID\n"
+                    + "					        join [Group] g on g.GID = e.GID\n"
                     + "						join Lession le on le.GID = g.GID\n"
                     + "						join TimeSlot t on t.timeID = le.TimeID\n"
                     + "						join Room r on r.RID = le.RID\n"
