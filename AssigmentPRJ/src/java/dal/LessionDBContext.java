@@ -101,7 +101,8 @@ public class LessionDBContext extends DBContext<Lession> {
     public void takeAttendanceWhenAttend(String lesid, ArrayList<Attendance> newatts) {
         try {
             connection.setAutoCommit(false);
-            String sql_update_change = "UPDATE Attendance SET description = ?, isPresent = ?, datetime = GETDATE() WHERE lesid = ? AND sid = ? AND (isPresent <> ? OR description <> ?)";
+            String sql_update_change = "UPDATE Attendance SET description = ?, isPresent = ?, datetime = GETDATE()"
+                    + " WHERE lesid = ? AND sid = ? AND (isPresent <> ? OR description <> ?)";
             PreparedStatement stm_update_change = connection.prepareStatement(sql_update_change);
             for (Attendance att : newatts) {
                 stm_update_change.setString(1, att.getDescription());

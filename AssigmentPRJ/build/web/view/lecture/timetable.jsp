@@ -186,7 +186,7 @@
 
         <div>
             <h4 class="d-flex justify-content-center align-items-center">
-                Lecture: ${sessionScope.account.username}
+                Lecturer: ${sessionScope.account.username}
             </h4>
         </div>
         <div class="table_container">

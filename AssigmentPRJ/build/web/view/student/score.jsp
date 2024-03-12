@@ -110,7 +110,7 @@
             }
 
             .status-studying {
-                color: blue;
+                color: green;
             }
 
 
@@ -268,7 +268,7 @@
                             <c:if test="${gr.score ge 0}">
                                 ${gr.score}
                             </c:if>
-                            <c:if test="${gr.score lt 0}">
+                            <c:if test="${gr.score lt 0 and (gr.exam.assessment.name ne 'Final Exam Resit')}">
                                 <c:set var="dontHasScore" value="true" />
                             </c:if>
                             <c:if test="${gr.score eq 0}">

@@ -18,6 +18,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -48,6 +50,8 @@ public class ViewScoreController extends BaseRBACController {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
             throws ServletException, IOException {
+        DecimalFormat fm = new DecimalFormat("0.0");
+         
         int sid = Integer.parseInt(request.getParameter("id"));
         String suid = request.getParameter("suid");
         GradeDBContext grDb = new GradeDBContext();
@@ -55,11 +59,28 @@ public class ViewScoreController extends BaseRBACController {
         if(suid != null){
             grades = grDb.getGradeByStudentIdAndSuject(sid, suid);
         }
-        
+        float average = 0;
         EnrollmentDBContext enrollDb = new EnrollmentDBContext();
         ArrayList<Enrollment> enrolls = enrollDb.getEnrollmentByStudentID(sid);
+        for (int i = 0; i < grades.size(); i++) {
+            if(grades.get(i).getExam().getAssessment().getName().equals("Final Exam Resit") && grades.get(i).getScore() <0){
+                for (Grade grade : grades) {
+                    if(!grade.getExam().getAssessment().getName().equals("Final Exam Resit")){
+                        average += Float.parseFloat(fm.format(grade.getScore() * grade.getExam().getAssessment().getWeight()));
+                    }
+                }
+                
+            }else if(grades.get(i).getExam().getAssessment().getName().equals("Final Exam Resit") && grades.get(i).getScore() >= 0){
+                for (Grade grade : grades) {
+                    if(!grade.getExam().getAssessment().getName().equals("Final Exam")){
+                        average += Float.parseFloat(fm.format(grade.getScore() * grade.getExam().getAssessment().getWeight()));
+                    }
+                }
+            }
+        }
         
-        float average = grDb.getAverageScore(sid, suid);
+        
+        
         request.setAttribute("average", average);
         request.setAttribute("grades", grades);
         request.setAttribute("enrolls", enrolls);

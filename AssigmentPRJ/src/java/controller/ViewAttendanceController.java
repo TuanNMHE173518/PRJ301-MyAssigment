@@ -49,44 +49,48 @@ public class ViewAttendanceController extends BaseRBACController {
     protected void doGet(HttpServletRequest request, HttpServletResponse response, Account account, ArrayList<Role> roles)
             throws ServletException, IOException {
         TimeHelper timehelp = new TimeHelper();
-        
+
         int sid = Integer.parseInt(request.getParameter("id"));
-        EnrollmentDBContext enDb = new EnrollmentDBContext();
-        LessionDBContext lessDb = new LessionDBContext();
-        ArrayList<Enrollment> enrolls = enDb.getEnrollmentByStudentID(sid);
-        String suid = request.getParameter("suid");
-        ArrayList<Attendance> atts = new ArrayList<>();
-        if (suid != null) {
-            atts = lessDb.getAttendanceByStudentIdAndSubject(sid, suid);
-        }
-
-        int absent = 0;
-        for (Attendance att : atts) {
-            if (att.getId() != 0 && att.isIspresent() == false) {
-                absent++;
+        if (sid == account.getStudent().getId()) {
+            EnrollmentDBContext enDb = new EnrollmentDBContext();
+            LessionDBContext lessDb = new LessionDBContext();
+            ArrayList<Enrollment> enrolls = enDb.getEnrollmentByStudentID(sid);
+            String suid = request.getParameter("suid");
+            ArrayList<Attendance> atts = new ArrayList<>();
+            if (suid != null) {
+                atts = lessDb.getAttendanceByStudentIdAndSubject(sid, suid);
             }
-        }
 
-        try {
-            if (!atts.isEmpty()) {
-                float percent = Math.round(((float)absent / atts.size()) * 100);
-                request.setAttribute("percent", percent);
+            int absent = 0;
+            for (Attendance att : atts) {
+                if (att.getId() != 0 && att.isIspresent() == false) {
+                    absent++;
+                }
             }
-        } catch (NumberFormatException e) {
+
+            try {
+                if (!atts.isEmpty()) {
+                    float percent = Math.round(((float) absent / atts.size()) * 100);
+                    request.setAttribute("percent", percent);
+                }
+            } catch (NumberFormatException e) {
+            }
+            ArrayList<String> days = new ArrayList<>();
+            for (int i = 0; i < atts.size(); i++) {
+
+                String d = timehelp.getDayofWeek(atts.get(i).getLession().getDate());
+                days.add(d);
+
+            }
+
+            request.setAttribute("days", days);
+            request.setAttribute("absent", absent);
+            request.setAttribute("atts", atts);
+            request.setAttribute("enrolls", enrolls);
+            request.getRequestDispatcher("../view/student/viewattend.jsp").forward(request, response);
+        }else{
+            response.getWriter().print("access denied!");
         }
-        ArrayList<String> days = new ArrayList<>();
-        for (int i = 0; i < atts.size(); i++) {
-            
-            String d = timehelp.getDayofWeek( atts.get(i).getLession().getDate());
-            days.add(d);
-            
-        }
-        
-        request.setAttribute("days", days);
-        request.setAttribute("absent", absent);
-        request.setAttribute("atts", atts);
-        request.setAttribute("enrolls", enrolls);
-        request.getRequestDispatcher("../view/student/viewattend.jsp").forward(request, response);
 
     }
 

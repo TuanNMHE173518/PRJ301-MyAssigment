@@ -57,7 +57,8 @@ public class GradeDBContext extends DBContext<Grade> {
                     + "					   join Student s on s.SID = gr.SID\n"
                     + "					   left join Assessment ass on ass.AssID = e.AssID\n"
                     + "					   join [Subject] su on su.SuID = ass.SuID \n"
-                    + "where s.SID = ? and su.SuID = ? ";
+                    + "where s.SID = ? and su.SuID = ? "
+                    + " order by e.[begin]";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setInt(1, sid);
             stm.setString(2, suid);
