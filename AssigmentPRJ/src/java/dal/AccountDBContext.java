@@ -7,10 +7,13 @@ package dal;
 import entity.Account;
 import entity.Lecture;
 import entity.Student;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import util.HashHelper;
 
 /**
  *
@@ -34,7 +37,7 @@ public class AccountDBContext extends DBContext<Account> {
                 Account account = new Account();
                 account.setUsername(rs.getString("username"));
                 account.setPassword(rs.getString("password"));
-               
+
                 return getAccountByUsernameAndPassword(account.getUsername(), account.getPassword());
 
             }
@@ -47,28 +50,33 @@ public class AccountDBContext extends DBContext<Account> {
     public Account getAccountByUsernameAndPassword(String username, String password) {
         try {
             PreparedStatement stm = null;
-            String sql = "select username, password, displayname, lecid,sid from Account where username = ? and password = ?";
+            String sql = "select username, password, displayname, lecid,sid from Account where username = ?";
             stm = connection.prepareStatement(sql);
             stm.setString(1, username);
-            stm.setString(2, password);
+
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Account a = new Account();
-                a.setUsername(username);
-                a.setPassword(password);
-                a.setDisplayname(rs.getString("displayname"));
+                HashHelper hash = new HashHelper();
+                String storedpass = rs.getString("password");
+                String hashPass = hash.hasPassword(password);
+                if (hashPass.equals(storedpass)) {
+                    Account a = new Account();
+                    a.setUsername(username);
+                    a.setPassword(password);
+                    a.setDisplayname(rs.getString("displayname"));
 
-                if (rs.getInt("lecid") != 0) {
-                    Lecture l = new Lecture();
-                    l.setId(rs.getInt("lecid"));
-                    a.setLecture(l);
+                    if (rs.getInt("lecid") != 0) {
+                        Lecture l = new Lecture();
+                        l.setId(rs.getInt("lecid"));
+                        a.setLecture(l);
+                    }
+                    if (rs.getInt("sid") != 0) {
+                        Student s = new Student();
+                        s.setId(rs.getInt("sid"));
+                        a.setStudent(s);
+                    }
+                    return a;
                 }
-                if (rs.getInt("sid") != 0) {
-                    Student s = new Student();
-                    s.setId(rs.getInt("sid"));
-                    a.setStudent(s);
-                }
-                return a;
             }
 
         } catch (SQLException ex) {
