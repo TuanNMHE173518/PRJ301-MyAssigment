@@ -51,7 +51,7 @@ public class ViewAttendanceController extends BaseRBACController {
         TimeHelper timehelp = new TimeHelper();
 
         int sid = Integer.parseInt(request.getParameter("id"));
-        if (sid == account.getStudent().getId()) {
+        
             EnrollmentDBContext enDb = new EnrollmentDBContext();
             LessionDBContext lessDb = new LessionDBContext();
             ArrayList<Enrollment> enrolls = enDb.getEnrollmentByStudentID(sid);
@@ -88,9 +88,7 @@ public class ViewAttendanceController extends BaseRBACController {
             request.setAttribute("atts", atts);
             request.setAttribute("enrolls", enrolls);
             request.getRequestDispatcher("../view/student/viewattend.jsp").forward(request, response);
-        }else{
-            response.getWriter().print("access denied!");
-        }
+        
 
     }
 

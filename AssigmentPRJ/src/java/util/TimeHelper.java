@@ -73,7 +73,7 @@ public class TimeHelper {
     public static Date addDaysToDate(Date date, int days) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_MONTH, days); // Adds the specified number of days to the date
+        calendar.add(Calendar.DAY_OF_MONTH, days); 
         return calendar.getTime();
     }
     
@@ -81,7 +81,7 @@ public class TimeHelper {
         // Lấy một thể hiện của Calendar và thiết lập nó đến ngày hiện tại
         Calendar calendar = Calendar.getInstance();
 
-        // Lấy ngày hiện tại
+        
         Date currentDate = calendar.getTime();
 
         // Đặt thứ hai của tuần là ngày bắt đầu
@@ -92,12 +92,12 @@ public class TimeHelper {
         calendar.add(Calendar.DAY_OF_WEEK, 6);
         Date weekEndDate = calendar.getTime();
 
-        // Định dạng các ngày theo định dạng "dd/MM"
+        
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String startDateFormat = dateFormat.format(weekStartDate);
         String endDateFormat = dateFormat.format(weekEndDate);
 
-        // Trả về chuỗi mô tả tuần hiện tại
+        
         return startDateFormat + " to " + endDateFormat;
     }
 

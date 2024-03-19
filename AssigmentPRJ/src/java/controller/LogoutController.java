@@ -30,10 +30,11 @@ public class LogoutController extends HttpServlet {
     throws ServletException, IOException {
         request.getSession().setAttribute("account", null);
         Cookie c_username = new Cookie("username", "");
-        Cookie c_password = new Cookie("password", "");
+        Cookie c_token = new Cookie("token", "");
+        
         c_username.setMaxAge(-1);
-        c_password.setMaxAge(-1);
-        response.addCookie(c_password);
+        c_token.setMaxAge(-1);
+        response.addCookie(c_token);
         response.addCookie(c_username);
         response.sendRedirect("login");
     } 

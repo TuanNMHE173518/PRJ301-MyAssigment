@@ -96,7 +96,9 @@
                                         </label>
                                     </div>
                                     <div>
-                                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9981/AssigmentPRJ/GoogleLoginServlet&response_type=code&client_id=857065850978-s9bfjh0gti0j11nek5t92jp8elsh9sfe.apps.googleusercontent.com&approval_prompt=force">Google Sign-In</a>
+                                        <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:9981/AssigmentPRJ/GoogleLoginServlet&response_type=code&client_id=857065850978-s9bfjh0gti0j11nek5t92jp8elsh9sfe.apps.googleusercontent.com&approval_prompt=force">
+                                            Google Sign-In
+                                        </a>
                                     </div>        
                                 </div>
 

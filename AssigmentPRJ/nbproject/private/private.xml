@@ -7,18 +7,25 @@
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/entity/Account.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/AccountDBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/entity/google/Constant.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/util/HashHelper.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/RoleDBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/TimeTableController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/StudentDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/images/173173.jpg</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/entity/google/GoogleDTO.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/TimeSlotDBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/student/score.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/GradeDBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/googlesignin/GoogleLoginServlet.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/googlesignin/GoogleSupport.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/util/TimeHelper.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/images/173131.jpg</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/lecture/timetable.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/base/BaseRBACController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/lecture/takeatt.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/ViewAttendanceController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/EnrollmentDBContext.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/LogoutController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/base/BaseRequiredAuthentication.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/ViewScoreController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/HomeController.java</file>
@@ -26,8 +33,10 @@
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/home.jsp</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/TakeAttendanceController.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/dal/DBContext.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/src/java/entity/Lecture.java</file>
             <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/student/viewattend.jsp</file>
+            <file>file:/C:/Users/ADMIN/Documents/GitHub/PRJ301-MyAssigment/AssigmentPRJ/web/view/images/173518.jpg</file>
         </group>
     </open-files>
 </project-private>

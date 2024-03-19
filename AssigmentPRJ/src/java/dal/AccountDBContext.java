@@ -21,6 +21,45 @@ import util.HashHelper;
  */
 public class AccountDBContext extends DBContext<Account> {
 
+    public Account getAccountbyToken(String token) {
+        try {
+            PreparedStatement stm = null;
+            String sql = "select username, password, displayname, lecid,[sid] \n"
+                    + "from Account a join Tokens tok on a.username = tok.account\n"
+                    + "where tok.token = ? ";
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, token);
+
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+
+                Account a = new Account();
+                a.setUsername(rs.getString("username"));
+
+                a.setDisplayname(rs.getString("displayname"));
+
+                if (rs.getInt("lecid") != 0) {
+                    Lecture l = new Lecture();
+                    l.setId(rs.getInt("lecid"));
+                    a.setLecture(l);
+                }
+                if (rs.getInt("sid") != 0) {
+                    Student s = new Student();
+                    s.setId(rs.getInt("sid"));
+                    a.setStudent(s);
+                }
+                return a;
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+
+    }
+
     public Account getAccountGoogleByEmail(String email) {
 
         try {
@@ -56,10 +95,10 @@ public class AccountDBContext extends DBContext<Account> {
 
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                HashHelper hash = new HashHelper();
+
                 String storedpass = rs.getString("password");
-                String hashPass = hash.hasPassword(password);
-                if (hashPass.equals(storedpass)) {
+
+                if (password.equals(storedpass)) {
                     Account a = new Account();
                     a.setUsername(username);
                     a.setPassword(password);

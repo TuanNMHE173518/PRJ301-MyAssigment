@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import util.HashHelper;
 
 /**
  *
@@ -27,25 +28,26 @@ public abstract class BaseRequiredAuthentication extends HttpServlet{
             Cookie[] cookies = req.getCookies();
             if(cookies != null){
                 String user = null;
-                String pass = null;
+                String token = null;
                 for (Cookie cooky : cookies) {
                     if(cooky.getName().equals("username")){
                         user = cooky.getValue();
                     }
                     
-                    if(cooky.getName().equals("password")){
-                        pass = cooky.getValue();
+                    if(cooky.getName().equals("token")){
+                        token = cooky.getValue();
                     }
-                    if(user != null && pass != null){
+                    if(user != null && token != null){
                         break;
                     }
                 }
                 
-                if(user == null || pass == null){
+                if(user == null || token == null){
                     return null;
                 }else{
                     AccountDBContext accDb = new AccountDBContext();
-                    Account test = accDb.getAccountByUsernameAndPassword(user, pass);
+                    
+                    Account test = accDb.getAccountbyToken(token);
                     if(test != null){
                         session.setAttribute("account", test);
                     }
